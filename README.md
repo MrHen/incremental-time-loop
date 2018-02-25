@@ -4,6 +4,6 @@
 
 ```
 npm install
-docker-compose up watch
+docker-compose run --rm --service-ports watch
 curl 0.0.0.0:3000
 ```
