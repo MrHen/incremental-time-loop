@@ -13,8 +13,22 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+      {
+        enforce: 'pre',
+        test: /\.tsx?$/,
+        loader: 'tslint-loader',
+        exclude: /(node_modules)/,
+      },
+      {
+        test: /\.tsx?$/,
+        loader: "awesome-typescript-loader",
+        exclude: /(node_modules)/,
+      },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
+      }
     ]
   },
   plugins: [
