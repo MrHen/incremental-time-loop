@@ -1,38 +1,29 @@
 import { MaterialActions } from "../actions";
 
 interface IAction {
-  id: string;
   type: string;
-  text: string;
   amount?: number;
 }
 
 export interface IMaterial {
-  completed?: boolean;
-  id?: string;
-  text?: string;
   energy: number;
+  ticks: number;
 }
 
 export type IMaterialsState = IMaterial;
 
 const materialDefaults: IMaterial = {
   energy: 0,
+  ticks: 0,
 };
 
 const materials = (state: IMaterialsState = materialDefaults, action: IAction): IMaterialsState => {
   switch (action.type) {
-    case "ADD_TODO":
+    case MaterialActions.AddTick:
       return {
         ...state,
-        ...{
-          completed: false,
-          energy: 0,
-          id: action.id,
-          text: action.text,
-        },
+        ticks: state.ticks + action.amount,
       };
-
     case MaterialActions.AddEnergy:
       return {
         ...state,

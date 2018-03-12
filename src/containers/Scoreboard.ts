@@ -1,27 +1,14 @@
-import { connect, Dispatch, MapStateToPropsParam } from "react-redux";
+import { connect } from "react-redux";
 
 import { addEnergy } from "../actions";
-import Counter, { ICounterProps } from "../components/Counter";
+import Scoreboard from "../components/Scoreboard";
 import { IState } from "../reducers";
 
-interface IScoreboardProps {
-  label: string;
-}
-
-const mapStateToProps = (state: IState, ownProps: IScoreboardProps) => {
+const mapStateToProps = (state: IState) => {
   return {
-    value: state.materials.energy,
+    energy: state.materials.energy,
+    ticks: state.materials.ticks,
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<any>, ownProps: IScoreboardProps) => {
-  return {
-    onClick: () => {
-      dispatch(addEnergy());
-    },
-  };
-};
-
-const Scoreboard = connect(mapStateToProps, mapDispatchToProps)(Counter);
-
-export default Scoreboard;
+export default connect(mapStateToProps)(Scoreboard);

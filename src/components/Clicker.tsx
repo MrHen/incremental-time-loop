@@ -1,20 +1,18 @@
 import * as PropTypes from "prop-types";
 import * as React from "react";
 
-export interface ICounterProps {
+export interface IClickerProps {
   onClick: any;
-  value: number;
 }
 
-export class Counter extends React.Component<ICounterProps, any> {
+export class Clicker extends React.Component<IClickerProps, any> {
   public render() {
     return (
       <div>
-        <p>{this.props.value}</p>
         <button onClick={this.props.onClick}>CLICK</button>
       </div>
     );
   }
 }
 
-export default Counter;
+export default Clicker;
