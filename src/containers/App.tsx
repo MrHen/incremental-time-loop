@@ -13,6 +13,7 @@ const App = () => {
     <div>
       <Scoreboard />
       <Clicker type={MaterialTypes.energy} />
+      <Clicker type={MaterialTypes.ticks} />
     </div>
   );
 };

@@ -16,3 +16,15 @@ export const addTick = (amount: number = 1) => {
     type: MaterialActions.AddTick,
   };
 };
+
+let timer: NodeJS.Timer = null;
+export const toggleTicker = (rate: number = 1) => {
+  return (dispatch: any) => {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    } else {
+      timer = setInterval(() => dispatch(addTick(rate)), rate * 1000);
+    }
+  };
+};
