@@ -17,6 +17,11 @@ const materialDefaults: IMaterial = {
   ticks: 0,
 };
 
+export enum MaterialTypes {
+  energy = "ENERGY",
+  ticks = "TICKS",
+}
+
 const materials = (state: IMaterialsState = materialDefaults, action: IAction): IMaterialsState => {
   switch (action.type) {
     case MaterialActions.AddTick:
