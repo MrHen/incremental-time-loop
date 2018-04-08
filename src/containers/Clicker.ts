@@ -1,7 +1,10 @@
 import { connect, Dispatch } from "react-redux";
 
-import { addEnergy, toggleTicker } from "../actions";
+import { addEnergy } from "../actions";
+import { toggleTicker } from "../actions/timers";
+
 import Clicker, { IClickerProps } from "../components/Clicker";
+
 import { IState } from "../reducers";
 import { MaterialTypes } from "../reducers/materials";
 
