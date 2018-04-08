@@ -7,7 +7,7 @@ import { MaterialActions } from "../actions";
 
 interface IBuyGeneratorAction {
   amount: number;
-  generatorType: string;
+  generatorType: GeneratorTypes;
   type: string;
 }
 
@@ -23,22 +23,22 @@ type GeneratorMap = {
   [key in GeneratorTypes]: IGenerator;
 };
 
-const generatorDefaults: GeneratorMap = {
+export type IGeneratorState = GeneratorMap;
+
+const generatorDefaults: IGeneratorState = {
   BASIC: {
     owned: 0,
   },
 };
 
-const generators = (state: GeneratorMap = generatorDefaults, action: IBuyGeneratorAction): GeneratorMap => {
+const generators = (
+  state: IGeneratorState = generatorDefaults,
+  action: IBuyGeneratorAction,
+): IGeneratorState => {
   switch (action.type) {
     case MaterialActions.BuyGenerator:
       const next = _cloneDeep(state);
-      _update(next, `${action.type}.owned`, (generator: IGenerator) => {
-        return {
-          ...generator,
-          owned: generator.owned + action.amount,
-        };
-      });
+      next[action.generatorType].owned += action.amount;
       return next;
 
     default:

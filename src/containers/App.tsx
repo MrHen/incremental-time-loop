@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 
 import { addEnergy } from "../actions";
 import { IState } from "../reducers";
+import { GeneratorTypes } from "../reducers/generators";
 import { MaterialTypes } from "../reducers/materials";
 
 import Clicker from "./Clicker";
+import GeneratorClcker from "./GeneratorClicker";
 import Scoreboard from "./Scoreboard";
 
 const App = () => {
@@ -14,6 +16,7 @@ const App = () => {
       <Scoreboard />
       <Clicker type={MaterialTypes.energy} />
       <Clicker type={MaterialTypes.ticks} />
+      <GeneratorClcker type={GeneratorTypes.BASIC} />
     </div>
   );
 };
