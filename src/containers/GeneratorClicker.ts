@@ -1,11 +1,10 @@
-import _get from "lodash-es/get";
 import { connect, Dispatch } from "react-redux";
 
 import {
   GeneratorTypes,
   purchase,
 } from "../actions/generators";
-import Clicker, { IClickerProps } from "../components/Clicker";
+import Clicker from "../components/Clicker";
 import { IState } from "../reducers";
 
 interface IClickerContainerProps {

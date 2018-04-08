@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 
-import { addEnergy } from "../actions";
 import Scoreboard from "../components/Scoreboard";
 import { IState } from "../reducers";
 
