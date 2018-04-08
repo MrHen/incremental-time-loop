@@ -1,7 +1,7 @@
 import _get from "lodash-es/get";
 import { connect, Dispatch } from "react-redux";
 
-import { buyGenerator } from "../actions";
+import { buyGenerator } from "../actions/generators";
 import Clicker, { IClickerProps } from "../components/Clicker";
 import { IState } from "../reducers";
 import { GeneratorTypes } from "../reducers/generators";

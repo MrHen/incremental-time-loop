@@ -3,9 +3,9 @@ import {
   update as _update,
 } from "lodash-es";
 
-import { MaterialActions } from "../actions";
+import { GeneratorActions } from "../actions/generators";
 
-interface IBuyGeneratorAction {
+interface IGeneratorPurchaseAction {
   amount: number;
   generatorType: GeneratorTypes;
   type: string;
@@ -33,10 +33,10 @@ const generatorDefaults: IGeneratorState = {
 
 const generators = (
   state: IGeneratorState = generatorDefaults,
-  action: IBuyGeneratorAction,
+  action: IGeneratorPurchaseAction,
 ): IGeneratorState => {
   switch (action.type) {
-    case MaterialActions.BuyGenerator:
+    case GeneratorActions.BuyGenerator:
       const next = _cloneDeep(state);
       next[action.generatorType].owned += action.amount;
       return next;
