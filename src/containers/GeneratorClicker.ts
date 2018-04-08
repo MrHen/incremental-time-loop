@@ -14,7 +14,7 @@ interface IClickerContainerProps {
 const mapStateToProps = (state: IState, props: IClickerContainerProps) => {
   let label: string;
   switch (props.type) {
-    case GeneratorTypes.BASIC:
+    case GeneratorTypes.Basic:
       label = `basic (${state.generators[props.type].owned})`;
       break;
   }

@@ -15,10 +15,10 @@ interface IClickerContainerProps {
 const mapStateToProps = (state: IState, props: IClickerContainerProps) => {
   let label: string;
   switch (props.type) {
-    case MaterialTypes.energy:
+    case MaterialTypes.Energy:
       label = "energy";
       break;
-    case MaterialTypes.ticks:
+    case MaterialTypes.Ticks:
       label = "toggle ticker";
       break;
   }
@@ -31,10 +31,10 @@ const mapStateToProps = (state: IState, props: IClickerContainerProps) => {
 const mapDispatchToProps = (dispatch: Dispatch<any>, props: IClickerContainerProps) => {
   let onClick: any;
   switch (props.type) {
-    case MaterialTypes.energy:
+    case MaterialTypes.Energy:
       onClick = addEnergy();
       break;
-    case MaterialTypes.ticks:
+    case MaterialTypes.Ticks:
       onClick = toggleTicker();
       break;
   }

@@ -13,9 +13,9 @@ const App = () => {
   return (
     <div>
       <Scoreboard />
-      <Clicker type={MaterialTypes.energy} />
-      <Clicker type={MaterialTypes.ticks} />
-      <GeneratorClcker type={GeneratorTypes.BASIC} />
+      <Clicker type={MaterialTypes.Energy} />
+      <Clicker type={MaterialTypes.Ticks} />
+      <GeneratorClcker type={GeneratorTypes.Basic} />
     </div>
   );
 };

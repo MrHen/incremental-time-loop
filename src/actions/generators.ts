@@ -1,9 +1,9 @@
 export enum GeneratorActionTypes {
-  GENERATOR_PURCHASE = "GENERATOR_PURCHASE",
+  GeneratorPurchase = "GENERATOR_PURCHASE",
 }
 
 export enum GeneratorTypes {
-  BASIC = "BASIC",
+  Basic = "BASIC",
 }
 
 export interface IGeneratorPurchaseAction {
@@ -14,12 +14,12 @@ export interface IGeneratorPurchaseAction {
 
 export const purchase = ({
   amount = 1,
-  generatorType = GeneratorTypes.BASIC,
+  generatorType = GeneratorTypes.Basic,
 }): IGeneratorPurchaseAction => {
   return {
     amount,
     generatorType,
-    type: GeneratorActionTypes.GENERATOR_PURCHASE,
+    type: GeneratorActionTypes.GeneratorPurchase,
   };
 };
 

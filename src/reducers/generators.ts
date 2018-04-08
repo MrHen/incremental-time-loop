@@ -13,11 +13,11 @@ export interface IGenerator {
 }
 
 export interface IGeneratorsState {
-  [GeneratorTypes.BASIC]: IGenerator;
+  [GeneratorTypes.Basic]: IGenerator;
 }
 
 const generatorDefaults: IGeneratorsState = {
-  [GeneratorTypes.BASIC]: {
+  [GeneratorTypes.Basic]: {
     owned: 0,
   },
 };
@@ -27,7 +27,7 @@ const generators = (
   action: IGeneratorPurchaseAction,
 ): IGeneratorsState => {
   switch (action.type) {
-    case GeneratorActionTypes.GENERATOR_PURCHASE:
+    case GeneratorActionTypes.GeneratorPurchase:
       const next = _cloneDeep(state);
       next[action.generatorType].owned += action.amount;
       return next;

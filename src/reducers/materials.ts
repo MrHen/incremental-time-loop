@@ -2,8 +2,8 @@ import { MaterialActionTypes } from "../actions/materials";
 import { TimerActionTypes } from "../actions/timers";
 
 export enum MaterialTypes {
-  energy = "ENERGY",
-  ticks = "TICKS",
+  Energy = "ENERGY",
+  Ticks = "TICKS",
 }
 
 interface IAction {
