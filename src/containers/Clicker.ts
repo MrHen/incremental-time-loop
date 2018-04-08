@@ -1,7 +1,6 @@
 import { connect, Dispatch } from "react-redux";
 
-import { addEnergy } from "../actions/materials";
-import { toggleTicker } from "../actions/timers";
+import actions from "../actions";
 
 import Clicker from "../components/Clicker";
 
@@ -32,10 +31,10 @@ const mapDispatchToProps = (dispatch: Dispatch<any>, props: IClickerContainerPro
   let onClick: any;
   switch (props.type) {
     case MaterialTypes.Energy:
-      onClick = addEnergy();
+      onClick = actions.ADD_ENERGY();
       break;
     case MaterialTypes.Ticks:
-      onClick = toggleTicker();
+      onClick = actions.TIMERS_TOGGLE();
       break;
   }
 

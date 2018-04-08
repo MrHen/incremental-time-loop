@@ -24,7 +24,7 @@ export const purchase = ({
 };
 
 const actions = {
-  purchase,
+  [GeneratorActionTypes.GeneratorPurchase]: purchase,
 };
 
 export default actions;

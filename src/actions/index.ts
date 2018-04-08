@@ -5,10 +5,9 @@ import timerActions, { TimerActionTypes } from "./timers";
 export type ActionTypes = MaterialActionTypes | GeneratorActionTypes | TimerActionTypes;
 
 const actions = {
-  addEnergy: materialActions.addEnergy,
-  addTick: timerActions.addTick,
-  generators: generatorActions,
-  toggleTicker: timerActions.toggleTicker,
+  ...timerActions,
+  ...materialActions,
+  ...generatorActions,
 };
 
 export default actions;

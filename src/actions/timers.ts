@@ -1,5 +1,6 @@
 export enum TimerActionTypes {
   AddTick = "TIMERS_ADD_TICK",
+  ToggleTicker = "TIMERS_TOGGLE",
 }
 
 export const addTick = (amount: number = 1) => {
@@ -22,8 +23,8 @@ export const toggleTicker = (rate: number = 1) => {
 };
 
 const actions = {
-  addTick,
-  toggleTicker,
+  [TimerActionTypes.AddTick]: addTick,
+  [TimerActionTypes.ToggleTicker]: toggleTicker,
 };
 
 export default actions;

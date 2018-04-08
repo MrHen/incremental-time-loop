@@ -10,7 +10,7 @@ export const addEnergy = (amount: number = 1) => {
 };
 
 const actions = {
-  addEnergy,
+  [MaterialActionTypes.AddEnergy]: addEnergy,
 };
 
 export default actions;
