@@ -1,42 +1,33 @@
 import {
   cloneDeep as _cloneDeep,
-  update as _update,
 } from "lodash-es";
 
-import { GeneratorActions } from "../actions/generators";
-
-interface IGeneratorPurchaseAction {
-  amount: number;
-  generatorType: GeneratorTypes;
-  type: string;
-}
+import {
+  GeneratorActionTypes,
+  GeneratorTypes,
+  IGeneratorPurchaseAction,
+} from "../actions/generators";
 
 export interface IGenerator {
   owned: number;
 }
 
-export enum GeneratorTypes {
-  BASIC = "BASIC",
+export interface IGeneratorsState {
+  [GeneratorTypes.BASIC]: IGenerator;
 }
 
-type GeneratorMap = {
-  [key in GeneratorTypes]: IGenerator;
-};
-
-export type IGeneratorState = GeneratorMap;
-
-const generatorDefaults: IGeneratorState = {
-  BASIC: {
+const generatorDefaults: IGeneratorsState = {
+  [GeneratorTypes.BASIC]: {
     owned: 0,
   },
 };
 
 const generators = (
-  state: IGeneratorState = generatorDefaults,
+  state: IGeneratorsState = generatorDefaults,
   action: IGeneratorPurchaseAction,
-): IGeneratorState => {
+): IGeneratorsState => {
   switch (action.type) {
-    case GeneratorActions.BuyGenerator:
+    case GeneratorActionTypes.GENERATOR_PURCHASE:
       const next = _cloneDeep(state);
       next[action.generatorType].owned += action.amount;
       return next;

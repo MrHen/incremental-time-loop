@@ -1,11 +1,11 @@
-import generatorActions, { GeneratorActions } from "./generators";
+import generatorActions, { GeneratorActionTypes } from "./generators";
 
 export enum MaterialActions {
   AddEnergy = "ADD_ENERGY",
   AddTick = "ADD_TICK",
 }
 
-export type ActionTypes = MaterialActions | GeneratorActions;
+export type ActionTypes = MaterialActions | GeneratorActionTypes;
 
 export const addEnergy = (amount: number = 1) => {
   return {

@@ -1,28 +1,26 @@
 import { MaterialActions } from "../actions";
 
-interface IAction {
-  type: string;
-  amount?: number;
-}
-
-export interface IMaterial {
-  energy: number;
-  ticks: number;
-}
-
-export type IMaterialsState = IMaterial;
-
-const materialDefaults: IMaterial = {
-  energy: 0,
-  ticks: 0,
-};
-
 export enum MaterialTypes {
   energy = "ENERGY",
   ticks = "TICKS",
 }
 
-const materials = (state: IMaterialsState = materialDefaults, action: IAction): IMaterialsState => {
+interface IAction {
+  type: string;
+  amount?: number;
+}
+
+export interface IMaterialState {
+  energy: number;
+  ticks: number;
+}
+
+const materialDefaults: IMaterialState = {
+  energy: 0,
+  ticks: 0,
+};
+
+const materials = (state: IMaterialState = materialDefaults, action: IAction): IMaterialState => {
   switch (action.type) {
     case MaterialActions.AddTick:
       return {

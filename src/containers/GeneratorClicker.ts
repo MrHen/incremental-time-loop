@@ -1,10 +1,12 @@
 import _get from "lodash-es/get";
 import { connect, Dispatch } from "react-redux";
 
-import { buyGenerator } from "../actions/generators";
+import {
+  GeneratorTypes,
+  purchase,
+} from "../actions/generators";
 import Clicker, { IClickerProps } from "../components/Clicker";
 import { IState } from "../reducers";
-import { GeneratorTypes } from "../reducers/generators";
 
 interface IClickerContainerProps {
   type: GeneratorTypes;
@@ -24,7 +26,7 @@ const mapStateToProps = (state: IState, props: IClickerContainerProps) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, props: IClickerContainerProps) => {
-  const onClick = buyGenerator({ generatorType: props.type});
+  const onClick = purchase({ generatorType: props.type});
 
   return {
     onClick: () => {
