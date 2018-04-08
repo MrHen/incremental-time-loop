@@ -1,6 +1,7 @@
 export enum MaterialActions {
   AddEnergy = "ADD_ENERGY",
   AddTick = "ADD_TICK",
+  BuyGenerator = "BUY_GENERATOR",
 }
 
 export const addEnergy = (amount: number = 1) => {
@@ -14,6 +15,17 @@ export const addTick = (amount: number = 1) => {
   return {
     amount,
     type: MaterialActions.AddTick,
+  };
+};
+
+export const buyGenerator = ({
+  amount = 1,
+  generatorType = "basic",
+}) => {
+  return {
+    amount,
+    generatorType,
+    type: MaterialActions.BuyGenerator,
   };
 };
 
