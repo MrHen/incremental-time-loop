@@ -1,22 +1,11 @@
 import generatorActions, { GeneratorActionTypes } from "./generators";
+import materialActions, { MaterialActionTypes } from "./materials";
 import timerActions, { TimerActionTypes } from "./timers";
 
-export enum MaterialActions {
-  AddEnergy = "ADD_ENERGY",
-  AddTick = "ADD_TICK",
-}
-
-export type ActionTypes = MaterialActions | GeneratorActionTypes | TimerActionTypes;
-
-export const addEnergy = (amount: number = 1) => {
-  return {
-    amount,
-    type: MaterialActions.AddEnergy,
-  };
-};
+export type ActionTypes = MaterialActionTypes | GeneratorActionTypes | TimerActionTypes;
 
 const actions = {
-  addEnergy,
+  addEnergy: materialActions.addEnergy,
   addTick: timerActions.addTick,
   generators: generatorActions,
   toggleTicker: timerActions.toggleTicker,

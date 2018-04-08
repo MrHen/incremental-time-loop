@@ -1,4 +1,5 @@
-import { MaterialActions } from "../actions";
+import { MaterialActionTypes } from "../actions/materials";
+import { TimerActionTypes } from "../actions/timers";
 
 export enum MaterialTypes {
   energy = "ENERGY",
@@ -22,12 +23,12 @@ const materialDefaults: IMaterialState = {
 
 const materials = (state: IMaterialState = materialDefaults, action: IAction): IMaterialState => {
   switch (action.type) {
-    case MaterialActions.AddTick:
+    case TimerActionTypes.AddTick:
       return {
         ...state,
         ticks: state.ticks + action.amount,
       };
-    case MaterialActions.AddEnergy:
+    case MaterialActionTypes.AddEnergy:
       return {
         ...state,
         energy: state.energy + action.amount,
