@@ -18,7 +18,7 @@ const mapStateToProps = (state: IState, props: IClickerContainerProps) => {
       label = "energy";
       break;
     case MaterialTypes.Ticks:
-      label = "toggle ticker";
+      label = "tick";
       break;
   }
 
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>, props: IClickerContainerPro
   let onClick: any;
   switch (props.type) {
     case MaterialTypes.Energy:
-      onClick = actions.ADD_ENERGY();
+      onClick = actions.MATERIALS_ADD_ENERGY();
       break;
     case MaterialTypes.Ticks:
       onClick = actions.TIMERS_TOGGLE();
