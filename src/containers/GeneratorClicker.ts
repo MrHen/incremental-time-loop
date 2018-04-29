@@ -2,7 +2,6 @@ import { connect, Dispatch } from "react-redux";
 
 import actions from "../actions";
 import {
-  GeneratorActionTypes,
   GeneratorTypes,
 } from "../actions/generators";
 import Clicker from "../components/Clicker";
@@ -26,7 +25,7 @@ const mapStateToProps = (state: IState, props: IClickerContainerProps) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<any>, props: IClickerContainerProps) => {
-  const onClick = actions[GeneratorActionTypes.GeneratorPurchase]({ generatorType: props.type });
+  const onClick = actions.GENERATOR_PURCHASE({ generatorType: props.type });
 
   return {
     onClick: () => {

@@ -27,7 +27,7 @@ const generators = (
   action: IGeneratorPurchaseAction,
 ): IGeneratorsState => {
   switch (action.type) {
-    case GeneratorActionTypes.GeneratorPurchase:
+    case GeneratorActionTypes.GeneratorAdd:
       const next = _cloneDeep(state);
       next[action.generatorType].owned += action.amount;
       return next;
