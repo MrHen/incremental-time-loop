@@ -31,8 +31,16 @@ export const purchase = ({
   generatorType = GeneratorTypes.Basic,
 }) => {
   return (dispatch: any, getState: any) => {
-    dispatch(addEnergy(-1));
-    dispatch(add({ amount, generatorType }));
+    const {
+      materials: {
+        energy = 0,
+      },
+    } = getState();
+
+    if (energy >= 1) {
+      dispatch(addEnergy(-1));
+      dispatch(add({ amount, generatorType }));
+    }
   };
 };
 
