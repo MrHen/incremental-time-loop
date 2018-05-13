@@ -1,4 +1,4 @@
-import { Action, ActionCreator, ActionCreatorsMapObject } from "redux";
+import { Action, ActionCreator } from "redux";
 
 import { StateThunkAction} from "../reducers/state";
 
@@ -30,7 +30,7 @@ export const add: ActionCreator<IGeneratorPurchaseAction> = ({
   };
 };
 
-export const purchase = ({
+export const purchase: ActionCreator<StateThunkAction> = ({
   amount = 1,
   generatorType = GeneratorTypes.Basic,
 }) => {
@@ -50,7 +50,7 @@ export const purchase = ({
   return thunk;
 };
 
-const actions: ActionCreatorsMapObject = {
+const actions = {
   [GeneratorActionTypes.GeneratorAdd]: add,
   [GeneratorActionTypes.GeneratorPurchase]: purchase,
 };
