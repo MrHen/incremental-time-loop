@@ -1,3 +1,7 @@
+import { Action, ActionCreator, ActionCreatorsMapObject } from "redux";
+
+import { StateThunkAction} from "../reducers/state";
+
 import { addEnergy } from "./materials";
 
 export enum GeneratorActionTypes {
@@ -9,16 +13,16 @@ export enum GeneratorTypes {
   Basic = "BASIC",
 }
 
-export interface IGeneratorPurchaseAction {
+export interface IGeneratorPurchaseAction extends Action {
   amount: number;
   generatorType: GeneratorTypes;
-  type: string;
+  type: GeneratorActionTypes.GeneratorAdd;
 }
 
-export const add = ({
+export const add: ActionCreator<IGeneratorPurchaseAction> = ({
   amount = 1,
   generatorType = GeneratorTypes.Basic,
-}): IGeneratorPurchaseAction => {
+}) => {
   return {
     amount,
     generatorType,
@@ -30,7 +34,7 @@ export const purchase = ({
   amount = 1,
   generatorType = GeneratorTypes.Basic,
 }) => {
-  return (dispatch: any, getState: any) => {
+  const thunk: StateThunkAction = (dispatch, getState) => {
     const {
       materials: {
         energy = 0,
@@ -42,9 +46,11 @@ export const purchase = ({
       dispatch(add({ amount, generatorType }));
     }
   };
+
+  return thunk;
 };
 
-const actions = {
+const actions: ActionCreatorsMapObject = {
   [GeneratorActionTypes.GeneratorAdd]: add,
   [GeneratorActionTypes.GeneratorPurchase]: purchase,
 };

@@ -4,8 +4,8 @@ import actions from "../actions";
 
 import Clicker from "../components/Clicker";
 
-import { IState } from "../reducers";
 import { MaterialTypes } from "../reducers/materials";
+import { IState } from "../reducers/state";
 
 interface IClickerContainerProps {
   type: string;

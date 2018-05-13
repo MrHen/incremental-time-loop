@@ -1,14 +1,10 @@
 import { TimerActionTypes } from "../actions/timers";
+import { ITimerState } from "./state";
 
 interface IAction {
   type: string;
   rate?: number;
   timer?: number;
-}
-
-export interface ITimerState {
-  timer?: number;
-  rate: number;
 }
 
 const timerDefaults: ITimerState = {

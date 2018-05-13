@@ -1,6 +1,8 @@
 import { MaterialActionTypes } from "../actions/materials";
 import { TimerActionTypes } from "../actions/timers";
 
+import { IMaterialState } from "./state";
+
 export enum MaterialTypes {
   Energy = "ENERGY",
   Ticks = "TICKS",
@@ -9,11 +11,6 @@ export enum MaterialTypes {
 interface IAction {
   type: string;
   amount?: number;
-}
-
-export interface IMaterialState {
-  energy: number;
-  ticks: number;
 }
 
 const materialDefaults: IMaterialState = {

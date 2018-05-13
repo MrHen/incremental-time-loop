@@ -5,7 +5,7 @@ import {
   GeneratorTypes,
 } from "../actions/generators";
 import Clicker from "../components/Clicker";
-import { IState } from "../reducers";
+import { IState } from "../reducers/state";
 
 interface IClickerContainerProps {
   type: GeneratorTypes;
