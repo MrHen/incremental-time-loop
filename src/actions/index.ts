@@ -1,10 +1,13 @@
-export enum MaterialActions {
-  AddEnergy = "ADD_ENERGY",
-}
+import generatorActions, { GeneratorActionTypes } from "./generators";
+import materialActions, { MaterialActionTypes } from "./materials";
+import timerActions, { TimerActionTypes } from "./timers";
 
-export const addEnergy = (amount: number = 1) => {
-  return {
-    amount,
-    type: MaterialActions.AddEnergy,
-  };
+export type ActionTypes = MaterialActionTypes | GeneratorActionTypes | TimerActionTypes;
+
+const actions = {
+  ...timerActions,
+  ...materialActions,
+  ...generatorActions,
 };
+
+export default actions;

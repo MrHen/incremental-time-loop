@@ -1,39 +1,34 @@
-import { MaterialActions } from "../actions";
+import { MaterialActionTypes } from "../actions/materials";
+import { TimerActionTypes } from "../actions/timers";
+
+export enum MaterialTypes {
+  Energy = "ENERGY",
+  Ticks = "TICKS",
+}
 
 interface IAction {
-  id: string;
   type: string;
-  text: string;
   amount?: number;
 }
 
-export interface IMaterial {
-  completed?: boolean;
-  id?: string;
-  text?: string;
+export interface IMaterialState {
   energy: number;
+  ticks: number;
 }
 
-export type IMaterialsState = IMaterial;
-
-const materialDefaults: IMaterial = {
+const materialDefaults: IMaterialState = {
   energy: 0,
+  ticks: 0,
 };
 
-const materials = (state: IMaterialsState = materialDefaults, action: IAction): IMaterialsState => {
+const materials = (state: IMaterialState = materialDefaults, action: IAction): IMaterialState => {
   switch (action.type) {
-    case "ADD_TODO":
+    case TimerActionTypes.AddTick:
       return {
         ...state,
-        ...{
-          completed: false,
-          energy: 0,
-          id: action.id,
-          text: action.text,
-        },
+        ticks: state.ticks + action.amount,
       };
-
-    case MaterialActions.AddEnergy:
+    case MaterialActionTypes.AddEnergy:
       return {
         ...state,
         energy: state.energy + action.amount,

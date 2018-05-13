@@ -1,12 +1,16 @@
 import { combineReducers } from "redux";
-import materials from "./materials";
-
-import { IMaterialsState } from "../reducers/materials";
+import generators, { IGeneratorsState } from "./generators";
+import materials, { IMaterialState } from "./materials";
+import timers, { ITimerState } from "./timers";
 
 export interface IState {
-  materials: IMaterialsState;
+  materials: IMaterialState;
+  generators: IGeneratorsState;
+  timers: ITimerState;
 }
 
 export default combineReducers({
+  generators,
   materials,
+  timers,
 });

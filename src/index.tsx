@@ -1,16 +1,33 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import {
+  applyMiddleware,
+  compose,
+  createStore,
+} from "redux";
+import thunk from "redux-thunk";
 
-import Scoreboard from "./containers/Scoreboard";
+import App from "./containers/App";
+import DevTools from "./containers/DevTools";
 import reducers from "./reducers";
 
-const store = createStore(reducers);
+const enhancer = compose(
+  applyMiddleware(
+    thunk,
+  ),
+  // Required! Enable Redux DevTools with the monitors you chose
+  DevTools.instrument(),
+);
+
+const store = createStore(reducers, {}, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Scoreboard label="Hello"/>
+    <div>
+      <App />
+      <DevTools />
+    </div>
   </Provider>,
   document.getElementById("root"),
 );
