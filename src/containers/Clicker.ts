@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>, props: IClickerContainerPro
   let onClick: any;
   switch (props.type) {
     case MaterialTypes.Energy:
-      onClick = actions.MATERIALS_ADD_ENERGY();
+      onClick = actions.MATERIALS_ADD_ENERGY({ amount: 1 });
       break;
     case MaterialTypes.Ticks:
       onClick = actions.TIMERS_TOGGLE();

@@ -8,6 +8,10 @@ export interface IGenerator {
   owned: number;
 }
 
+export interface IEngineState {
+  energyPerSecond: number;
+}
+
 export interface IGeneratorsState {
   [GeneratorTypes.Basic]: IGenerator;
 }
@@ -23,6 +27,7 @@ export interface ITimerState {
 }
 
 export interface IState {
+  engine: IEngineState;
   materials: IMaterialState;
   generators: IGeneratorsState;
   timers: ITimerState;
