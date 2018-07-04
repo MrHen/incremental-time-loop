@@ -8,13 +8,9 @@ import {
   IGeneratorPurchaseAction,
 } from "../actions/generators";
 
-export interface IGenerator {
-  owned: number;
-}
-
-export interface IGeneratorsState {
-  [GeneratorTypes.Basic]: IGenerator;
-}
+import {
+  IGeneratorsState,
+} from "./state";
 
 const generatorDefaults: IGeneratorsState = {
   [GeneratorTypes.Basic]: {

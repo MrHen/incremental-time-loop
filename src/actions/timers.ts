@@ -1,3 +1,5 @@
+import { addEnergyFromTick, recalculateRates } from "./engine";
+
 export enum TimerActionTypes {
   AddTick = "TIMERS_ADD_TICK",
   ToggleTicker = "TIMERS_TOGGLE",
@@ -13,7 +15,7 @@ export const addTick = (amount: number = 1) => {
   };
 };
 
-export const tickerStart = (rate?: number) => {
+export const tickerStart = (rate: number = 1000) => {
   return (dispatch: any) => {
     dispatch(tickerLoop(rate));
     return dispatch({
@@ -39,14 +41,16 @@ export const tickerToggle = (rate?: number) => {
   };
 };
 
-const tickerLoop = (rate: number = 1) => {
+const tickerLoop = (rate: number = 1000) => {
   return (dispatch: any) => {
     const timer = window.setTimeout(
       () => {
         dispatch(addTick());
+        dispatch(recalculateRates());
+        dispatch(addEnergyFromTick());
         dispatch(tickerLoop(rate));
       },
-      rate * 1000,
+      rate,
     );
 
     return dispatch({
