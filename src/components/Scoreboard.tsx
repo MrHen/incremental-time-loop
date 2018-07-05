@@ -5,7 +5,7 @@ export interface IScoreboardProps {
   energy: number;
 }
 
-export class Scoreboard extends React.Component<IScoreboardProps, any> {
+export class Scoreboard extends React.PureComponent<IScoreboardProps, any> {
   public render() {
     return (
       <table>

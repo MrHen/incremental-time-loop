@@ -6,7 +6,8 @@
         "module": "commonjs",
         "target": "es5",
         "jsx": "react",
-        "noUnusedLocals": true
+        "noUnusedLocals": true,
+        "experimentalDecorators": true,
     },
     "include": [
         "./src/**/*"
