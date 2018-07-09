@@ -1,9 +1,9 @@
 import { Action, ActionCreator } from "redux";
 
-import { StateThunkAction} from "../reducers/state";
-
 import { GeneratorTypes } from "../models/Generator";
 import { addEnergy } from "./materials";
+
+import { StateThunkAction } from "./StateActions";
 
 export enum EngineActionTypes {
   AddEnergyFromTick = "ADD_ENERGY_FROM_TICK",

@@ -4,7 +4,8 @@ import {
   GeneratorTypes,
   getGeneratorCost,
 } from "../models/Generator";
-import { StateThunkAction} from "../reducers/state";
+
+import { StateThunkAction } from "./StateActions";
 
 import { addEnergy } from "./materials";
 
