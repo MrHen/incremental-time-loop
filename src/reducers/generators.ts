@@ -15,7 +15,7 @@ import {
 const generatorDefaults: IGeneratorsState = {
   [GeneratorTypes.Basic]: {
     costBase: 1,
-    costScaling: 0.5,
+    costScaling: 1.1,
     name: "basic",
     owned: 0,
     type: GeneratorTypes.Basic,

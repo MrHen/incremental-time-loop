@@ -39,10 +39,19 @@ export const purchase: ActionCreator<StateThunkAction> = ({
       materials: {
         energy = 0,
       },
+      generators: {
+        [generatorType]: {
+          costBase,
+          costScaling,
+          owned,
+        },
+      },
     } = getState();
 
-    if (energy >= 1) {
-      dispatch(addEnergy({ amount: -1 }));
+    const cost = Math.ceil(costBase * (costScaling ** owned));
+
+    if (energy >= cost) {
+      dispatch(addEnergy({ amount: -cost }));
       dispatch(add({ amount, generatorType }));
     }
   };

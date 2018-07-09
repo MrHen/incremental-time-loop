@@ -6,17 +6,40 @@ export interface IGeneratorProps {
   owned: number;
   costBase: number;
   costScaling: number;
+  renderCost?: React.StatelessComponent<IGeneratorProps>;
+  renderScaling?: React.StatelessComponent<IGeneratorProps>;
 }
 
 export class GeneratorView extends React.PureComponent<IGeneratorProps, null> {
+  private static renderCost(data: IGeneratorProps) {
+    const {
+      owned,
+      costScaling,
+      costBase,
+    } = data;
+
+    return <span>{Math.ceil(costBase * (costScaling ** owned))}</span>;
+  }
+
+  private static renderScaling(data: IGeneratorProps) {
+    const {
+      owned,
+      costScaling,
+      costBase,
+    } = data;
+
+    return <code>{costBase}*({costScaling}^{owned})</code>;
+  }
+
   public render() {
     const {
       props: {
         name,
         owned,
-        costScaling,
-        costBase,
         onClick,
+
+        renderCost = GeneratorView.renderCost,
+        renderScaling = GeneratorView.renderScaling,
       },
     } = this;
 
@@ -40,7 +63,8 @@ export class GeneratorView extends React.PureComponent<IGeneratorProps, null> {
         onClick={onClick}
       >
         <div>{name} ({owned})</div>
-        <div><code>{costBase}^({costScaling}*{owned})</code></div>
+        <div>{renderCost(this.props)}</div>
+        <div>{renderScaling(this.props)}</div>
       </div>
     );
   }
