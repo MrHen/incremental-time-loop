@@ -4,13 +4,16 @@ import {
 
 import {
   GeneratorActionTypes,
-  GeneratorTypes,
   IGeneratorPurchaseAction,
 } from "../actions/generators";
 
 import {
+  GeneratorTypes,
+} from "../models/Generator";
+
+import {
   IGeneratorsState,
-} from "./state";
+} from "../models/GameState";
 
 const generatorDefaults: IGeneratorsState = {
   [GeneratorTypes.Basic]: {

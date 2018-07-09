@@ -2,9 +2,9 @@ import * as React from "react";
 import { connect, Dispatch } from "react-redux";
 
 import actions from "../actions";
-import { GeneratorTypes } from "../actions/generators";
 import GeneratorView, { IGeneratorProps } from "../components/GeneratorView";
-import { IState } from "../reducers/state";
+import { IState } from "../models/GameState";
+import { GeneratorTypes } from "../models/Generator";
 
 interface IGeneratorContainerProps {
   type: GeneratorTypes;

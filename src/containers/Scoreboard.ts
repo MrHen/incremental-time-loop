@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import Scoreboard from "../components/Scoreboard";
-import { IState } from "../reducers/state";
+import { IState } from "../models/GameState";
 
 const mapStateToProps = (state: IState) => {
   return {

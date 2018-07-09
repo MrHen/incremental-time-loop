@@ -1,5 +1,6 @@
 import { Action, ActionCreator } from "redux";
 
+import { GeneratorTypes } from "../models/Generator";
 import { StateThunkAction} from "../reducers/state";
 
 import { addEnergy } from "./materials";
@@ -7,10 +8,6 @@ import { addEnergy } from "./materials";
 export enum GeneratorActionTypes {
   GeneratorAdd = "GENERATOR_ADD",
   GeneratorPurchase = "GENERATOR_PURCHASE",
-}
-
-export enum GeneratorTypes {
-  Basic = "BASIC",
 }
 
 export interface IGeneratorPurchaseAction extends Action {

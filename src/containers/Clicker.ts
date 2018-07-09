@@ -4,8 +4,8 @@ import actions from "../actions";
 
 import ClickerView from "../components/ClickerView";
 
+import { IState } from "../models/GameState";
 import { MaterialTypes } from "../reducers/materials";
-import { IState } from "../reducers/state";
 
 interface IClickerContainerProps {
   type: string;

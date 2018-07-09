@@ -1,5 +1,5 @@
 import { TimerActionTypes } from "../actions/timers";
-import { ITimerState } from "./state";
+import { ITimerState } from "../models/GameState";
 
 interface IAction {
   type: string;
