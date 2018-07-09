@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { getGeneratorCost, IGenerator } from "../models/Generator";
+import { getGeneratorCost, IGenerator } from "../models/generators";
 
 export interface IGeneratorProps {
   onClick: any;

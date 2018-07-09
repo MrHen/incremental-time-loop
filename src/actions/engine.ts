@@ -1,6 +1,6 @@
 import { Action, ActionCreator } from "redux";
 
-import { GeneratorTypes } from "../models/Generator";
+import { GeneratorTypes } from "../models/generators";
 import { addEnergy } from "./materials";
 
 import { StateThunkAction } from "./StateActions";

@@ -3,7 +3,7 @@ import { Action, ActionCreator } from "redux";
 import {
   GeneratorTypes,
   getGeneratorCost,
-} from "../models/Generator";
+} from "../models/generators";
 
 import { StateThunkAction } from "./StateActions";
 

@@ -1,7 +1,7 @@
 import {
   GeneratorTypes,
   IGenerator,
-} from "./Generator";
+} from "./generators";
 
 export interface IEngineState {
   energyPerSecond: number;

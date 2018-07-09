@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { GeneratorTypes } from "../models/Generator";
+import { GeneratorTypes } from "../models/generators";
 
 import { MaterialTypes } from "../reducers/materials";
 

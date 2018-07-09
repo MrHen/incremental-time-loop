@@ -9,7 +9,7 @@ import {
 
 import {
   GeneratorTypes,
-} from "../models/Generator";
+} from "../models/generators";
 
 import {
   IGeneratorsState,
