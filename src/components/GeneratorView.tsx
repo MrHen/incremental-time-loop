@@ -1,11 +1,10 @@
 import * as React from "react";
 
+import { getGeneratorCost, IGenerator } from "../models/Generator";
+
 export interface IGeneratorProps {
   onClick: any;
-  name: string;
-  owned: number;
-  costBase: number;
-  costScaling: number;
+  generator: IGenerator;
   renderCost?: React.StatelessComponent<IGeneratorProps>;
   renderScaling?: React.StatelessComponent<IGeneratorProps>;
 }
@@ -13,19 +12,19 @@ export interface IGeneratorProps {
 export class GeneratorView extends React.PureComponent<IGeneratorProps, null> {
   private static renderCost(data: IGeneratorProps) {
     const {
-      owned,
-      costScaling,
-      costBase,
+      generator,
     } = data;
 
-    return <span>{Math.ceil(costBase * (costScaling ** owned))}</span>;
+    return <span>{getGeneratorCost(generator)}</span>;
   }
 
   private static renderScaling(data: IGeneratorProps) {
     const {
-      owned,
-      costScaling,
-      costBase,
+      generator: {
+        owned,
+        costScaling,
+        costBase,
+      },
     } = data;
 
     return <code>{costBase}*({costScaling}^{owned})</code>;
@@ -34,10 +33,11 @@ export class GeneratorView extends React.PureComponent<IGeneratorProps, null> {
   public render() {
     const {
       props: {
-        name,
-        owned,
+        generator: {
+          name,
+          owned,
+        },
         onClick,
-
         renderCost = GeneratorView.renderCost,
         renderScaling = GeneratorView.renderScaling,
       },

@@ -25,11 +25,8 @@ const mapStateToProps = (state: IState, props: IGeneratorContainerProps) => {
   }
 
   return {
-    costBase: generator.costBase,
-    costScaling: generator.costScaling,
-    name: generator.name,
-    owned: generator.owned,
-    type: props.type,
+    ...props,
+    generator,
   };
 };
 
@@ -53,20 +50,14 @@ class GeneratorContainer extends React.PureComponent<IGeneratorInnerProps, {}> {
   public render(): React.ReactNode {
     const {
       props: {
-        name,
-        owned,
-        costScaling,
-        costBase,
+        generator,
         onClick,
       },
     } = this;
 
     return (
       <GeneratorView
-        name={name}
-        owned={owned}
-        costBase={costBase}
-        costScaling={costScaling}
+        generator={generator}
         onClick={onClick}
       />
     );

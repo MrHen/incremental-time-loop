@@ -9,3 +9,11 @@ export interface IGenerator {
   costScaling: number;
   owned: number;
 }
+
+export function getGeneratorCost({
+  costBase,
+  costScaling,
+  owned,
+}: IGenerator) {
+  return Math.ceil(costBase * (costScaling ** owned));
+}

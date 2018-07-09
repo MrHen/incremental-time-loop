@@ -1,6 +1,9 @@
 import { Action, ActionCreator } from "redux";
 
-import { GeneratorTypes } from "../models/Generator";
+import {
+  GeneratorTypes,
+  getGeneratorCost,
+} from "../models/Generator";
 import { StateThunkAction} from "../reducers/state";
 
 import { addEnergy } from "./materials";
@@ -37,15 +40,11 @@ export const purchase: ActionCreator<StateThunkAction> = ({
         energy = 0,
       },
       generators: {
-        [generatorType]: {
-          costBase,
-          costScaling,
-          owned,
-        },
+        [generatorType]: generator,
       },
     } = getState();
 
-    const cost = Math.ceil(costBase * (costScaling ** owned));
+    const cost = getGeneratorCost(generator);
 
     if (energy >= cost) {
       dispatch(addEnergy({ amount: -cost }));
