@@ -8,7 +8,7 @@ interface IAction {
 }
 
 const timerDefaults: ITimerState = {
-  rate: 1,
+  rate: 1000,
   timer: null,
 };
 

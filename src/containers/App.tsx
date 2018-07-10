@@ -3,19 +3,17 @@ import { connect } from "react-redux";
 
 import { GeneratorTypes } from "../models/generators";
 
-import { MaterialTypes } from "../reducers/materials";
-
-import Clicker from "./Clicker";
 import Generator from "./Generator";
 import Scoreboard from "./Scoreboard";
+import Ticker from "./Ticker";
 
 const App = () => {
   return (
     <div>
       <Scoreboard />
-      <Clicker type={MaterialTypes.Energy} />
-      <Clicker type={MaterialTypes.Ticks} />
+      <Ticker />
       <Generator type={GeneratorTypes.Basic} />
+      <Generator type={GeneratorTypes.AlphaOne} />
     </div>
   );
 };

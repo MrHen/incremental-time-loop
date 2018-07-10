@@ -1,6 +1,6 @@
 import { Action, ActionCreator } from "redux";
 
-import { GeneratorTypes } from "../models/generators";
+import { GeneratorTypes, getGeneratorValue } from "../models/generators";
 import { addEnergy } from "./materials";
 
 import { StateThunkAction } from "./StateActions";
@@ -28,10 +28,13 @@ export const recalculateRates: ActionCreator<StateThunkAction> = () => {
     const {
       generators: {
         [GeneratorTypes.Basic]: basic,
+        [GeneratorTypes.AlphaOne]: alphaOne,
       },
     } = getState();
 
-    const energyPerSecond = basic.owned;
+    let energyPerSecond = 0;
+    energyPerSecond += getGeneratorValue(basic);
+    energyPerSecond += getGeneratorValue(alphaOne);
 
     dispatch(setEnergyPerSecond({ energyPerSecond }));
   };

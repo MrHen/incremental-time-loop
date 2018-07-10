@@ -4,6 +4,7 @@ export enum TimerActionTypes {
   AddTick = "TIMERS_ADD_TICK",
   ToggleTicker = "TIMERS_TOGGLE",
   TickerStart = "TIMERS_TICKER_START",
+  TickerStep = "TIMERS_TICKER_STEP",
   TickerStop = "TIMERS_TICKER_STOP",
   TickerLoop = "TIMERS_TICKER_LOOP",
 }
@@ -45,9 +46,7 @@ const tickerLoop = (rate: number = 1000) => {
   return (dispatch: any) => {
     const timer = window.setTimeout(
       () => {
-        dispatch(addTick());
-        dispatch(recalculateRates());
-        dispatch(addEnergyFromTick());
+        dispatch(tickerStep());
         dispatch(tickerLoop(rate));
       },
       rate,
@@ -60,11 +59,21 @@ const tickerLoop = (rate: number = 1000) => {
   };
 };
 
+const tickerStep = () => {
+  return (dispatch: any) => {
+    // TODO: Use promises
+    dispatch(addTick());
+    dispatch(recalculateRates());
+    dispatch(addEnergyFromTick());
+  };
+};
+
 const actions = {
   [TimerActionTypes.AddTick]: addTick,
   [TimerActionTypes.TickerStart]: tickerStart,
   [TimerActionTypes.TickerStop]: tickerStop,
   [TimerActionTypes.TickerLoop]: tickerLoop,
+  [TimerActionTypes.TickerStep]: tickerStep,
   [TimerActionTypes.ToggleTicker]: tickerToggle,
 };
 
