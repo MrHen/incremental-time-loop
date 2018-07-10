@@ -3,8 +3,8 @@ import { connect, Dispatch } from "react-redux";
 
 import actions from "../actions";
 import GeneratorView, { IGeneratorProps } from "../components/GeneratorView";
-import { IState } from "../models/GameState";
 import { GeneratorTypes } from "../models/generators";
+import { IState } from "../models/state";
 
 interface IGeneratorContainerProps {
   type: GeneratorTypes;

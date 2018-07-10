@@ -1,7 +1,7 @@
 import { MaterialActionTypes } from "../actions/materials";
 import { TimerActionTypes } from "../actions/timers";
 
-import { IMaterialState } from "../models/GameState";
+import { IMaterialState } from "../models/state";
 
 export enum MaterialTypes {
   Energy = "ENERGY",

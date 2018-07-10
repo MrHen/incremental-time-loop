@@ -9,7 +9,7 @@ import {
 
 import {
   IEngineState,
-} from "../models/GameState";
+} from "../models/state";
 
 const engineDefaults: IEngineState = {
   energyPerSecond: 0,

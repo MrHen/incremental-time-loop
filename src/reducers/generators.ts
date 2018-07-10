@@ -8,25 +8,12 @@ import {
 } from "../actions/generators";
 
 import {
-  GeneratorTypes,
-} from "../models/generators";
-
-import {
+  GeneratorsDefaults,
   IGeneratorsState,
-} from "../models/GameState";
-
-const generatorDefaults: IGeneratorsState = {
-  [GeneratorTypes.Basic]: {
-    costBase: 1,
-    costScaling: 1.1,
-    name: "basic",
-    owned: 0,
-    type: GeneratorTypes.Basic,
-  },
-};
+} from "../models/state";
 
 const generators = (
-  state: IGeneratorsState = generatorDefaults,
+  state: IGeneratorsState = GeneratorsDefaults,
   action: IGeneratorPurchaseAction,
 ): IGeneratorsState => {
   switch (action.type) {
