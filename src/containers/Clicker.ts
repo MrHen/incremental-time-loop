@@ -2,10 +2,10 @@ import { connect, Dispatch } from "react-redux";
 
 import actions from "../actions";
 
-import Clicker from "../components/Clicker";
+import ClickerView from "../components/ClickerView";
 
+import { IState } from "../models/state";
 import { MaterialTypes } from "../reducers/materials";
-import { IState } from "../reducers/state";
 
 interface IClickerContainerProps {
   type: string;
@@ -45,4 +45,4 @@ const mapDispatchToProps = (dispatch: Dispatch<any>, props: IClickerContainerPro
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Clicker);
+export default connect(mapStateToProps, mapDispatchToProps)(ClickerView);

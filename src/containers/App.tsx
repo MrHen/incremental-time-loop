@@ -1,12 +1,12 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { GeneratorTypes } from "../actions/generators";
+import { GeneratorTypes } from "../models/generators";
 
 import { MaterialTypes } from "../reducers/materials";
 
 import Clicker from "./Clicker";
-import GeneratorClcker from "./GeneratorClicker";
+import Generator from "./Generator";
 import Scoreboard from "./Scoreboard";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
       <Scoreboard />
       <Clicker type={MaterialTypes.Energy} />
       <Clicker type={MaterialTypes.Ticks} />
-      <GeneratorClcker type={GeneratorTypes.Basic} />
+      <Generator type={GeneratorTypes.Basic} />
     </div>
   );
 };

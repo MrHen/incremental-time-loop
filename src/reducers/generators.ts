@@ -4,22 +4,16 @@ import {
 
 import {
   GeneratorActionTypes,
-  GeneratorTypes,
   IGeneratorPurchaseAction,
 } from "../actions/generators";
 
 import {
+  GeneratorsDefaults,
   IGeneratorsState,
-} from "./state";
-
-const generatorDefaults: IGeneratorsState = {
-  [GeneratorTypes.Basic]: {
-    owned: 0,
-  },
-};
+} from "../models/generators";
 
 const generators = (
-  state: IGeneratorsState = generatorDefaults,
+  state: IGeneratorsState = GeneratorsDefaults,
   action: IGeneratorPurchaseAction,
 ): IGeneratorsState => {
   switch (action.type) {

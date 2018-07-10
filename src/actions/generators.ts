@@ -1,16 +1,17 @@
 import { Action, ActionCreator } from "redux";
 
-import { StateThunkAction} from "../reducers/state";
+import {
+  GeneratorTypes,
+  getGeneratorCost,
+} from "../models/generators";
+
+import { StateThunkAction } from "./StateActions";
 
 import { addEnergy } from "./materials";
 
 export enum GeneratorActionTypes {
   GeneratorAdd = "GENERATOR_ADD",
   GeneratorPurchase = "GENERATOR_PURCHASE",
-}
-
-export enum GeneratorTypes {
-  Basic = "BASIC",
 }
 
 export interface IGeneratorPurchaseAction extends Action {
@@ -39,10 +40,15 @@ export const purchase: ActionCreator<StateThunkAction> = ({
       materials: {
         energy = 0,
       },
+      generators: {
+        [generatorType]: generator,
+      },
     } = getState();
 
-    if (energy >= 1) {
-      dispatch(addEnergy({ amount: -1 }));
+    const cost = getGeneratorCost(generator);
+
+    if (energy >= cost) {
+      dispatch(addEnergy({ amount: -cost }));
       dispatch(add({ amount, generatorType }));
     }
   };

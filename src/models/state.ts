@@ -1,19 +1,9 @@
-import { ThunkAction } from "redux-thunk";
-
 import {
-  GeneratorTypes,
-} from "../actions/generators";
-
-export interface IGenerator {
-  owned: number;
-}
+  IGeneratorsState,
+} from "./generators";
 
 export interface IEngineState {
   energyPerSecond: number;
-}
-
-export interface IGeneratorsState {
-  [GeneratorTypes.Basic]: IGenerator;
 }
 
 export interface IMaterialState {
@@ -32,6 +22,3 @@ export interface IState {
   generators: IGeneratorsState;
   timers: ITimerState;
 }
-
-export type StateGetter = () => IState;
-export type StateThunkAction = ThunkAction<void, IState, void>;

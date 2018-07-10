@@ -5,7 +5,7 @@ export interface IClickerProps {
   label: string;
 }
 
-export class Clicker extends React.Component<IClickerProps, any> {
+export class ClickerView extends React.PureComponent<IClickerProps, null> {
   public render() {
     return (
       <div>
@@ -15,4 +15,4 @@ export class Clicker extends React.Component<IClickerProps, any> {
   }
 }
 
-export default Clicker;
+export default ClickerView;

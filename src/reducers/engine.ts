@@ -9,7 +9,7 @@ import {
 
 import {
   IEngineState,
-} from "./state";
+} from "../models/state";
 
 const engineDefaults: IEngineState = {
   energyPerSecond: 0,
