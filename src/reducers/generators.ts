@@ -10,7 +10,7 @@ import {
 import {
   GeneratorsDefaults,
   IGeneratorsState,
-} from "../models/state";
+} from "../models/generators";
 
 const generators = (
   state: IGeneratorsState = GeneratorsDefaults,
