@@ -1,44 +1,54 @@
 import * as React from "react";
 
-import { getGeneratorCost, IGenerator } from "../models/generators";
+export interface IGeneratorViewStateProps {
+  name: string;
+  owned: number;
+  cost: number;
+  scaling: string;
 
-export interface IGeneratorProps {
-  onClick: any;
-  generator: IGenerator;
-  renderCost?: React.StatelessComponent<IGeneratorProps>;
-  renderScaling?: React.StatelessComponent<IGeneratorProps>;
+  renderCost?: React.StatelessComponent<IGeneratorViewProps>;
+  renderLabel?: React.StatelessComponent<IGeneratorViewProps>;
+  renderScaling?: React.StatelessComponent<IGeneratorViewProps>;
 }
 
-export class GeneratorView extends React.PureComponent<IGeneratorProps, null> {
-  private static renderCost(data: IGeneratorProps) {
+export interface IGeneratorViewDispatchProps {
+  onClick: any;
+}
+
+export type IGeneratorViewProps = IGeneratorViewStateProps & IGeneratorViewDispatchProps;
+
+export class GeneratorView extends React.PureComponent<IGeneratorViewProps, null> {
+  private static renderCost(data: IGeneratorViewProps) {
     const {
-      generator,
+      cost,
     } = data;
 
-    return <span>{getGeneratorCost(generator)}</span>;
+    return <span>{cost}</span>;
   }
 
-  private static renderScaling(data: IGeneratorProps) {
+  private static renderLabel(data: IGeneratorViewProps) {
     const {
-      generator: {
-        owned,
-        costScaling,
-        costBase,
-      },
+      name,
+      owned,
     } = data;
 
-    return <code>{costBase}*({costScaling}^{owned})</code>;
+    return <span>{name} ({owned})</span>;
+  }
+
+  private static renderScaling(data: IGeneratorViewProps) {
+    const {
+      scaling,
+    } = data;
+
+    return <code>{scaling}</code>;
   }
 
   public render() {
     const {
       props: {
-        generator: {
-          name,
-          owned,
-        },
         onClick,
         renderCost = GeneratorView.renderCost,
+        renderLabel = GeneratorView.renderLabel,
         renderScaling = GeneratorView.renderScaling,
       },
     } = this;
@@ -62,7 +72,7 @@ export class GeneratorView extends React.PureComponent<IGeneratorProps, null> {
 
         onClick={onClick}
       >
-        <div>{name} ({owned})</div>
+        <div>{renderLabel(this.props)}</div>
         <div>{renderCost(this.props)}</div>
         <div>{renderScaling(this.props)}</div>
       </div>
