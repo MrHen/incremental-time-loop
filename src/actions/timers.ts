@@ -1,4 +1,8 @@
-import { addEnergyFromTick, recalculateRates } from "./engine";
+import {
+  addEnergyFromTick,
+  recalculateCosts,
+  recalculateRates,
+} from "./engine";
 
 export enum TimerActionTypes {
   AddTick = "TIMERS_ADD_TICK",
@@ -64,6 +68,7 @@ const tickerStep = () => {
     // TODO: Use promises
     dispatch(addTick());
     dispatch(recalculateRates());
+    dispatch(recalculateCosts());
     dispatch(addEnergyFromTick());
   };
 };

@@ -6,6 +6,7 @@ export enum GeneratorTypes {
 export interface IGenerator {
   type: GeneratorTypes;
   name: string;
+  cost?: number;
   costBase: number;
   costScaling: number;
   owned: number;
@@ -35,14 +36,6 @@ export const GeneratorsDefaults: IGeneratorsState = {
     value: 2,
   },
 };
-
-export function getGeneratorCost({
-  costBase,
-  costScaling,
-  owned,
-}: IGenerator) {
-  return Math.ceil(costBase * (costScaling ** owned));
-}
 
 // TODO: Support multiple materials
 export function getGeneratorValue({

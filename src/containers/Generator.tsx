@@ -6,7 +6,7 @@ import GeneratorView, {
   IGeneratorViewDispatchProps,
   IGeneratorViewStateProps,
 } from "../components/GeneratorView";
-import { GeneratorTypes, getGeneratorCost } from "../models/generators";
+import { GeneratorTypes } from "../models/generators";
 import { IState } from "../models/state";
 
 interface IGeneratorContainerProps {
@@ -31,6 +31,7 @@ const mapStateToProps = (
   const {
     name,
     owned,
+    cost,
     costBase,
     costScaling,
   } = generator;
@@ -38,7 +39,7 @@ const mapStateToProps = (
   return {
     ...props,
 
-    cost: getGeneratorCost(generator),
+    cost,
     name,
     owned,
     scaling: `${costBase}*(${costScaling}^${owned})`,
