@@ -1,17 +1,21 @@
 export enum GeneratorTypes {
   Basic = "BASIC",
+  AlphaOne = "ALPHA_ONE",
 }
 
 export interface IGenerator {
   type: GeneratorTypes;
   name: string;
+  cost?: number;
   costBase: number;
   costScaling: number;
   owned: number;
+  value: number;
 }
 
 export interface IGeneratorsState {
   [GeneratorTypes.Basic]: IGenerator;
+  [GeneratorTypes.AlphaOne]: IGenerator;
 }
 
 export const GeneratorsDefaults: IGeneratorsState = {
@@ -19,15 +23,24 @@ export const GeneratorsDefaults: IGeneratorsState = {
     costBase: 1,
     costScaling: 1.1,
     name: "basic",
-    owned: 0,
+    owned: 1,
     type: GeneratorTypes.Basic,
+    value: 1,
+  },
+  [GeneratorTypes.AlphaOne]: {
+    costBase: 10,
+    costScaling: 1.1,
+    name: "alpha",
+    owned: 0,
+    type: GeneratorTypes.AlphaOne,
+    value: 2,
   },
 };
 
-export function getGeneratorCost({
-  costBase,
-  costScaling,
+// TODO: Support multiple materials
+export function getGeneratorValue({
   owned,
+  value,
 }: IGenerator) {
-  return Math.ceil(costBase * (costScaling ** owned));
+  return owned * value;
 }

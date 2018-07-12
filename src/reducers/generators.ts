@@ -4,7 +4,7 @@ import {
 
 import {
   GeneratorActionTypes,
-  IGeneratorPurchaseAction,
+  IGeneratorAction,
 } from "../actions/generators";
 
 import {
@@ -14,17 +14,26 @@ import {
 
 const generators = (
   state: IGeneratorsState = GeneratorsDefaults,
-  action: IGeneratorPurchaseAction,
+  action: IGeneratorAction,
 ): IGeneratorsState => {
+  let next = null;
   switch (action.type) {
     case GeneratorActionTypes.GeneratorAdd:
-      const next = _cloneDeep(state);
+      next = _cloneDeep(state);
       next[action.generatorType].owned += action.amount;
-      return next;
+      break;
+
+    case GeneratorActionTypes.GeneratorSetCost:
+      next = _cloneDeep(state);
+      next[action.generatorType].cost = action.cost;
+      break;
 
     default:
-      return state;
+      next = state;
+      break;
   }
+
+  return next;
 };
 
 export default generators;
