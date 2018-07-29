@@ -14,6 +14,7 @@ const App = () => {
       <Ticker />
       <Generator type={GeneratorTypes.Basic} />
       <Generator type={GeneratorTypes.AlphaOne} />
+      <Generator type={GeneratorTypes.AlphaTwo} />
     </div>
   );
 };

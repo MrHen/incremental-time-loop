@@ -1,6 +1,7 @@
 export enum GeneratorTypes {
   Basic = "BASIC",
   AlphaOne = "ALPHA_ONE",
+  AlphaTwo = "ALPHA_TWO",
 }
 
 export interface IGenerator {
@@ -16,6 +17,7 @@ export interface IGenerator {
 export interface IGeneratorsState {
   [GeneratorTypes.Basic]: IGenerator;
   [GeneratorTypes.AlphaOne]: IGenerator;
+  [GeneratorTypes.AlphaTwo]: IGenerator;
 }
 
 export const GeneratorsDefaults: IGeneratorsState = {
@@ -34,6 +36,14 @@ export const GeneratorsDefaults: IGeneratorsState = {
     owned: 0,
     type: GeneratorTypes.AlphaOne,
     value: 2,
+  },
+  [GeneratorTypes.AlphaTwo]: {
+    costBase: 100,
+    costScaling: 1.1,
+    name: "alpha 2",
+    owned: 0,
+    type: GeneratorTypes.AlphaTwo,
+    value: 3,
   },
 };
 

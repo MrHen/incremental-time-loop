@@ -2,8 +2,9 @@ import {
   cloneDeep as _cloneDeep,
 } from "lodash-es";
 
+import ActionTypes from "../actions/ActionTypes";
+
 import {
-  GeneratorActionTypes,
   IGeneratorAction,
 } from "../actions/generators";
 
@@ -18,12 +19,12 @@ const generators = (
 ): IGeneratorsState => {
   let next = null;
   switch (action.type) {
-    case GeneratorActionTypes.GeneratorAdd:
+    case ActionTypes.GeneratorAdd:
       next = _cloneDeep(state);
       next[action.generatorType].owned += action.amount;
       break;
 
-    case GeneratorActionTypes.GeneratorSetCost:
+    case ActionTypes.GeneratorSetCost:
       next = _cloneDeep(state);
       next[action.generatorType].cost = action.cost;
       break;

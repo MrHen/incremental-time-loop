@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect, Dispatch } from "react-redux";
 
-import actions from "../actions";
+import generatorActions from "../actions/generators";
 import GeneratorView, {
   IGeneratorViewDispatchProps,
   IGeneratorViewStateProps,
@@ -50,7 +50,7 @@ const mapDispatchToProps = (
   dispatch: Dispatch<any>,
   props: IGeneratorContainerProps,
 ): IGeneratorDispatchProps => {
-  const onClick = actions.GENERATOR_PURCHASE({ generatorType: props.type });
+  const onClick = generatorActions.GENERATOR_PURCHASE({ generatorType: props.type });
 
   return {
     onClick: () => {
