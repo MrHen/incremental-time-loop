@@ -2,8 +2,9 @@ import {
   cloneDeep as _cloneDeep,
 } from "lodash-es";
 
+import { ActionTypes } from "../actions";
+
 import {
-  EngineActionTypes,
   ISetEnergyPerSecondAction,
 } from "../actions/engine";
 
@@ -20,7 +21,7 @@ const engine = (
   action: ISetEnergyPerSecondAction,
 ): IEngineState => {
   switch (action.type) {
-    case EngineActionTypes.SetEnergyPerSecond:
+    case ActionTypes.SetEnergyPerSecond:
       const next = _cloneDeep(state);
       next.energyPerSecond = action.energyPerSecond;
       return next;

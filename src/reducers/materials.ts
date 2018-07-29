@@ -1,5 +1,4 @@
-import { MaterialActionTypes } from "../actions/materials";
-import { TimerActionTypes } from "../actions/timers";
+import { ActionTypes } from "../actions";
 
 import { IMaterialState } from "../models/state";
 
@@ -20,12 +19,12 @@ const materialDefaults: IMaterialState = {
 
 const materials = (state: IMaterialState = materialDefaults, action: IAction): IMaterialState => {
   switch (action.type) {
-    case TimerActionTypes.AddTick:
+    case ActionTypes.AddTick:
       return {
         ...state,
         ticks: state.ticks + action.amount,
       };
-    case MaterialActionTypes.AddEnergy:
+    case ActionTypes.AddEnergy:
       return {
         ...state,
         energy: state.energy + action.amount,

@@ -1,22 +1,15 @@
+import ActionTypes from "./ActionTypes";
+
 import {
   addEnergyFromTick,
   recalculateCosts,
   recalculateRates,
 } from "./engine";
 
-export enum TimerActionTypes {
-  AddTick = "TIMERS_ADD_TICK",
-  ToggleTicker = "TIMERS_TOGGLE",
-  TickerStart = "TIMERS_TICKER_START",
-  TickerStep = "TIMERS_TICKER_STEP",
-  TickerStop = "TIMERS_TICKER_STOP",
-  TickerLoop = "TIMERS_TICKER_LOOP",
-}
-
 export const addTick = (amount: number = 1) => {
   return {
     amount,
-    type: TimerActionTypes.AddTick,
+    type: ActionTypes.AddTick,
   };
 };
 
@@ -25,14 +18,14 @@ export const tickerStart = (rate: number = 1000) => {
     dispatch(tickerLoop(rate));
     return dispatch({
       rate,
-      type: TimerActionTypes.TickerStart,
+      type: ActionTypes.TickerStart,
     });
   };
 };
 
 export const tickerStop = () => {
   return {
-    type: TimerActionTypes.TickerStop,
+    type: ActionTypes.TickerStop,
   };
 };
 
@@ -58,7 +51,7 @@ const tickerLoop = (rate: number = 1000) => {
 
     return dispatch({
       timer,
-      type: TimerActionTypes.TickerLoop,
+      type: ActionTypes.TickerLoop,
     });
   };
 };
@@ -74,12 +67,12 @@ const tickerStep = () => {
 };
 
 const actions = {
-  [TimerActionTypes.AddTick]: addTick,
-  [TimerActionTypes.TickerStart]: tickerStart,
-  [TimerActionTypes.TickerStop]: tickerStop,
-  [TimerActionTypes.TickerLoop]: tickerLoop,
-  [TimerActionTypes.TickerStep]: tickerStep,
-  [TimerActionTypes.ToggleTicker]: tickerToggle,
+  [ActionTypes.AddTick]: addTick,
+  [ActionTypes.TickerStart]: tickerStart,
+  [ActionTypes.TickerStop]: tickerStop,
+  [ActionTypes.TickerLoop]: tickerLoop,
+  [ActionTypes.TickerStep]: tickerStep,
+  [ActionTypes.ToggleTicker]: tickerToggle,
 };
 
 export default actions;

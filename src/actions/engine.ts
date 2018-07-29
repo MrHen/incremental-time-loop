@@ -3,27 +3,20 @@ import { Action, ActionCreator } from "redux";
 
 import generatorActions from "../actions/generators";
 import { getRecalculatedRates } from "../models/engine";
+
+import ActionTypes from "./ActionTypes";
 import { addEnergy } from "./materials";
-
 import { StateThunkAction } from "./StateActions";
-
-export enum EngineActionTypes {
-  AddEnergyFromTick = "ADD_ENERGY_FROM_TICK",
-  RecalculateCost = "RECALCULATE_COST",
-  RecalculateCosts = "RECALCULATE_COSTS",
-  RecalculateRates = "RECALCULATE_RATES",
-  SetEnergyPerSecond = "SET_ENERGY_PER_SECOND",
-}
 
 export interface ISetEnergyPerSecondAction extends Action {
   energyPerSecond: number;
-  type: EngineActionTypes.SetEnergyPerSecond;
+  type: ActionTypes.SetEnergyPerSecond;
 }
 
 export const setEnergyPerSecond: ActionCreator<ISetEnergyPerSecondAction> = ({ energyPerSecond = 1 }) => {
   return {
     energyPerSecond,
-    type: EngineActionTypes.SetEnergyPerSecond,
+    type: ActionTypes.SetEnergyPerSecond,
   };
 };
 
@@ -86,9 +79,9 @@ export const addEnergyFromTick: ActionCreator<StateThunkAction> = () => {
   return thunk;
 };
 const actions = {
-  [EngineActionTypes.AddEnergyFromTick]: addEnergyFromTick,
-  [EngineActionTypes.RecalculateRates]: recalculateRates,
-  [EngineActionTypes.SetEnergyPerSecond]: setEnergyPerSecond,
+  [ActionTypes.AddEnergyFromTick]: addEnergyFromTick,
+  [ActionTypes.RecalculateRates]: recalculateRates,
+  [ActionTypes.SetEnergyPerSecond]: setEnergyPerSecond,
 };
 
 export default actions;

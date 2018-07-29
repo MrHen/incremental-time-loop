@@ -1,4 +1,4 @@
-import { TimerActionTypes } from "../actions/timers";
+import { ActionTypes } from "../actions";
 import { ITimerState } from "../models/state";
 
 interface IAction {
@@ -14,12 +14,12 @@ const timerDefaults: ITimerState = {
 
 const timers = (state: ITimerState = timerDefaults, action: IAction): ITimerState => {
   switch (action.type) {
-    case TimerActionTypes.TickerStart:
+    case ActionTypes.TickerStart:
       return {
         ...state,
         rate: action.rate,
       };
-    case TimerActionTypes.TickerStop:
+    case ActionTypes.TickerStop:
       if (state.timer) {
         clearInterval(state.timer);
       }
@@ -28,7 +28,7 @@ const timers = (state: ITimerState = timerDefaults, action: IAction): ITimerStat
         ...state,
         timer: null,
       };
-    case TimerActionTypes.TickerLoop:
+    case ActionTypes.TickerLoop:
       if (state.timer && state.timer !== action.timer) {
         clearInterval(state.timer);
       }

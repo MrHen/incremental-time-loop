@@ -1,8 +1,10 @@
-import engineActions, { EngineActionTypes } from "./engine";
-import materialActions, { MaterialActionTypes } from "./materials";
-import timerActions, { TimerActionTypes } from "./timers";
+import ActionTypes_ from "./ActionTypes";
 
-export type ActionTypes = MaterialActionTypes | TimerActionTypes | EngineActionTypes;
+import engineActions from "./engine";
+import materialActions from "./materials";
+import timerActions from "./timers";
+
+export const ActionTypes = ActionTypes_;
 
 const actions = {
   ...engineActions,

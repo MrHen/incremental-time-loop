@@ -1,16 +1,14 @@
-export enum MaterialActionTypes {
-  AddEnergy = "MATERIALS_ADD_ENERGY",
-}
+import ActionTypes from "./ActionTypes";
 
 export const addEnergy = ({amount = 1} = {}) => {
   return {
     amount,
-    type: MaterialActionTypes.AddEnergy,
+    type: ActionTypes.AddEnergy,
   };
 };
 
 const actions = {
-  [MaterialActionTypes.AddEnergy]: addEnergy,
+  [ActionTypes.AddEnergy]: addEnergy,
 };
 
 export default actions;
