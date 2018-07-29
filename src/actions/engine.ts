@@ -1,8 +1,8 @@
 import { forEach as _forEach } from "lodash-es";
 import { Action, ActionCreator } from "redux";
 
-import generatorActions from "../actions/generators";
 import { getRecalculatedRates } from "../models/engine";
+import generatorActions from "./generators";
 
 import ActionTypes from "./ActionTypes";
 import { addEnergy } from "./materials";
@@ -78,6 +78,9 @@ export const addEnergyFromTick: ActionCreator<StateThunkAction> = () => {
 
   return thunk;
 };
+
+export type IEngineAction = ISetEnergyPerSecondAction;
+
 const actions = {
   [ActionTypes.AddEnergyFromTick]: addEnergyFromTick,
   [ActionTypes.RecalculateRates]: recalculateRates,

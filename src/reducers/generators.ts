@@ -2,11 +2,7 @@ import {
   cloneDeep as _cloneDeep,
 } from "lodash-es";
 
-import ActionTypes from "../actions/ActionTypes";
-
-import {
-  IGeneratorAction,
-} from "../actions/generators";
+import { ActionTypes, IAction } from "../actions";
 
 import {
   GeneratorsDefaults,
@@ -15,7 +11,7 @@ import {
 
 const generators = (
   state: IGeneratorsState = GeneratorsDefaults,
-  action: IGeneratorAction,
+  action: IAction,
 ): IGeneratorsState => {
   let next = null;
   switch (action.type) {
