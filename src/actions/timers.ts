@@ -1,10 +1,6 @@
 import ActionTypes from "./ActionTypes";
 
-import {
-  addEnergyFromTick,
-  recalculateCosts,
-  recalculateRates,
-} from "./engine";
+import engineActions from "./engine";
 
 export const addTick = (amount: number = 1) => {
   return {
@@ -60,9 +56,9 @@ const tickerStep = () => {
   return (dispatch: any) => {
     // TODO: Use promises
     dispatch(addTick());
-    dispatch(recalculateRates());
-    dispatch(recalculateCosts());
-    dispatch(addEnergyFromTick());
+    dispatch(engineActions.RECALCULATE_RATES());
+    dispatch(engineActions.RECALCULATE_COSTS());
+    dispatch(engineActions.ADD_ENERGY_FROM_TICK());
   };
 };
 

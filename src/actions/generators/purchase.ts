@@ -5,7 +5,7 @@ import {
 } from "../../models/generators";
 
 import ActionTypes from "../ActionTypes";
-import { addEnergy } from "../materials";
+import materialsActions from "../materials";
 import { StateThunkAction } from "../StateActions";
 
 import add from "./add";
@@ -33,7 +33,7 @@ const purchase: ActionCreator<StateThunkAction> = ({
     } = getState();
 
     if (energy >= cost) {
-      dispatch(addEnergy({ amount: -cost }));
+      dispatch(materialsActions.MATERIALS_ADD_ENERGY({ amount: -cost }));
       dispatch(add({ amount, generatorType }));
     }
   };
